@@ -11,7 +11,9 @@ class PageController extends Controller
 {
     public function index(){
 
-        $trains = Train::where('from_time','>=', now('Europe/Rome'))->get();
+        $trains = Train::where('from_time','>=', now('Europe/Rome'))
+        ->orderBy('from_time', 'ASC')
+        ->get();
 
         return view ('home', compact('trains'));
     }
